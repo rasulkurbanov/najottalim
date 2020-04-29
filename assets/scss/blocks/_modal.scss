@@ -1,0 +1,44 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  &--open {
+    display: block;
+  }
+}
+.modal--open .modal__dialog {
+  animation: modal-slide-down 0.5s ease 1 forwards;
+}
+.modal__dialog {
+  position: relative;
+  max-width: 600px;
+  padding: 30px 45px;
+  margin: 100px auto;
+  background-color: #fff;
+
+  &--youtube {
+    max-width: 800px;
+    padding: 0;
+  }
+}
+.modal__close-button {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  right: 20px;
+}
+@media (max-width: 600px) {
+  .modal__dialog {
+    position: absolute;
+    max-width: 95%;
+    left: 5%;
+    bottom: 30px;
+    margin: auto;
+  }
+}

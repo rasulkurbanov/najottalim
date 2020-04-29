@@ -1,0 +1,36 @@
+.socials {
+	margin-bottom: 30px;
+}
+.socials__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+.socials__item {
+	margin: 0 15px;
+}
+.socials__link {
+	display: block;
+	color: #222;
+	text-decoration: none;
+
+	svg {
+		display: block;
+		transition: fill $transition-duration ease;
+	}
+}
+.socials__link:hover svg {
+	fill: $primary-color;
+}
+@media (max-width: 430px) {
+	.socials {
+		margin-bottom: 20px;
+	}
+	.socials__item {
+		margin: 0 10px;
+	}
+}

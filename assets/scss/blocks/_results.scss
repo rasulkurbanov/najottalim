@@ -1,0 +1,145 @@
+.results {
+  background-color: #fafbfc;
+}
+.results__inner {
+  position: relative;
+  min-height: 580px;
+}
+.results__logo {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
+    content: "";
+  }
+}
+.results__logo-img {
+  position: relative;
+  z-index: 1;
+}
+.results__line {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &--1 {
+    bottom: 50%;
+    right: 50%;
+    width: 34.09%;
+    height: 33.62%;
+    background-image: url("../img/review-line-1.svg");
+  }
+
+  &--2 {
+    bottom: 50%;
+    right: 50%;
+    width: 8.86%;
+    height: 47.58%;
+    background-image: url("../img/review-line-2.svg");
+  }
+
+  &--3 {
+    bottom: 50%;
+    left: 50%;
+    width: 9.7%;
+    height: 40.51%;
+    background-image: url("../img/review-line-3.svg");
+  }
+
+  &--4 {
+    bottom: 50%;
+    left: 50%;
+    width: 31.64%;
+    height: 44.82%;
+    background-image: url("../img/review-line-4.svg");
+  }
+
+  &--5 {
+    top: 50%;
+    right: 50%;
+    width: 22.53%;
+    height: 4.65%;
+    background-image: url("../img/review-line-5.svg");
+  }
+
+  &--6 {
+    bottom: 50%;
+    left: 50%;
+    width: 22.1%;
+    height: 11.03%;
+    background-image: url("../img/review-line-6.svg");
+  }
+
+  &--7 {
+    top: 50%;
+    right: 50%;
+    width: 38.14%;
+    height: 35.68%;
+    background-image: url("../img/review-line-7.svg");
+  }
+
+  &--8 {
+    top: 50%;
+    right: 50%;
+    width: 11.56%;
+    height: 31.37%;
+    background-image: url("../img/review-line-8.svg");
+  }
+
+  &--9 {
+    top: 50%;
+    left: 50%;
+    width: 11.22%;
+    height: 38.62%;
+    background-image: url("../img/review-line-9.svg");
+  }
+
+  &--10 {
+    top: 50%;
+    left: 50%;
+    width: 34.26%;
+    height: 42.24%;
+    background-image: url("../img/review-line-10.svg");
+  }
+}
+.results__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+@media (max-width: 910px) {
+  .results__logo {
+    top: 41%;
+  }
+  .results__line--2 {
+    bottom: 46%;
+    left: 42%;
+  }
+  .results__line--4 {
+    left: 54%;
+    bottom: 47%;
+  }
+}
+@media (max-width: 775px) {
+  .results__logo,
+  .results__line {
+    display: none;
+  }
+}
