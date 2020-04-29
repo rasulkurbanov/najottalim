@@ -58,7 +58,6 @@ app.post( '/team', teamController.post)
 app.get( '/blog', blogController.get)
 app.post( '/blog', blogController.post)
 
-
 // Listener
 app.listen( port, () => {
 
