@@ -20,24 +20,13 @@ module.exports = {
 		res.render('twoerrors')
 	}
 
-	else if(!(isNaN(parseInt(name)))) {
-
-		res.render('errorname')
-	}
-
-	else if((isNaN(number))) {
-
-		res.render('errorphone')
-	}
-
 	else {
-		
+
 		res.render('post')
-	}
 
-	const client = await req.pgPool.connect()
-
-	const result = await client.query(`
+		const client = await req.pgPool.connect()	
+		
+		const result = await client.query(`
 
 		INSERT INTO posts (
 
@@ -48,8 +37,6 @@ module.exports = {
 		VALUES ( $1, $2, $3)`, [ name, number, course ])
 
 		client.release()
+	  }
 	}
 }
-
-
-

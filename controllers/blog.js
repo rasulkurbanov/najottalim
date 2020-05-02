@@ -15,29 +15,16 @@ module.exports = {
 		res.render('errorpost')
 	}
 
-	else if(!(isNaN(parseInt(name))) & (isNaN(number)) ) {
+	else if(!(isNaN(parseInt(name))) & (isNaN(number))) {
 
 		res.render('twoerrors')
 	}
 
-	else if(!(isNaN(parseInt(name)))) {
-
-		res.render('errorname')
-	}
-
-	else if((isNaN(number))) {
-
-		res.render('errorphone')
-	}
-
 	else {
-		
-		res.render('post')
-	}
-	
-	const client = await req.pgPool.connect()
 
-	const result = await client.query(`
+		const client = await req.pgPool.connect()
+
+		const result = await client.query(`
 
 		INSERT INTO posts (
 
@@ -46,7 +33,8 @@ module.exports = {
 			course_type
 		)
 		VALUES ( $1, $2, $3)`, [ name, number, course])
-	
-		client.release()
+
+			client.release()		
+		}
 	}
 }
