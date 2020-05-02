@@ -33,7 +33,7 @@ app.use(async function (req, res, next) {
 	next()
 })
 
-// Controller & Routers
+// Controllers & Routers
 const homeController = require('./controllers/home.js')
 const blogController = require('./controllers/blog.js')
 const blogpostController = require('./controllers/blogpost.js')
@@ -41,6 +41,7 @@ const courseController = require('./controllers/course.js')
 const coursesController = require('./controllers/courses.js')
 const galleryControllerteam = require('./controllers/gallery.js')
 const teamController = require('./controllers/team.js')
+const adminController = require('./controllers/admin.js')
 
 // Routes
 app.get( '/', homeController.get)
@@ -57,9 +58,10 @@ app.get( '/team', teamController.get)
 app.post( '/team', teamController.post)
 app.get( '/blog', blogController.get)
 app.post( '/blog', blogController.post)
+app.get( '/admin', adminController.get)
+
 
 // Listener
 app.listen( port, () => {
-
 	console.log( 'Server ready at at ' + port.port)
 })

@@ -1,14 +1,39 @@
 module.exports = {
 
 	get :  async (req,res) => {
-	res.render('index')
+	const body = req.body
+	res.render('index', { body: body})
 },
-	post : async(req,res) => {
-
+	post : async(req,res) => { 
 
 	const name = req.body.name
 	const number = req.body.phone_number
 	const course = req.body.course
+
+	if( course == null ) {
+		
+		res.render('errorpost')
+	}
+
+	else if(!(isNaN(parseInt(name))) & (isNaN(number)) ) {
+
+		res.render('twoerrors')
+	}
+
+	else if(!(isNaN(parseInt(name)))) {
+
+		res.render('errorname')
+	}
+
+	else if((isNaN(number))) {
+
+		res.render('errorphone')
+	}
+
+	else {
+		
+		res.render('post')
+	}
 
 	const client = await req.pgPool.connect()
 
@@ -20,11 +45,9 @@ module.exports = {
 			phone_number,
 			course_type
 		)
-		VALUES ( $1, $2, $3)`, [ name, number, course])
+		VALUES ( $1, $2, $3)`, [ name, number, course ])
 
-	res.render('post')
-
-	client.release()
+		client.release()
 	}
 }
 
