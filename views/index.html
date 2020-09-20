@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Najot Ta'lim. Test</title>
+  <title>Najot Ta'lim</title>
   <!-- Fonts -->
   <link rel="preload" href="static/fonts/ProximaNova-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="static/fonts/ProximaNova-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -88,7 +88,6 @@
           <li class="sitenav__item"><a href="/blog" class="sitenav__link">Blog</a></li>
           <li class="sitenav__item"><a href="#results" class="sitenav__link">Natijalar</a></li>
           <li class="sitenav__item"><a href="#" class="sitenav__link">Kontaktlar</a></li>
-          <li class="sitenav__item"><a href="/admin" class="sitenav__link">Admin</a></li>
         </ul>
       </div>
       <a href="#registration" class="sitenav__signup-link">Kursga ro'yxatdan o'tish</a>
@@ -106,7 +105,7 @@
           </p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="name-input">Ism*</label>
-            <input class="registration-form__field" id="name-input" name="name" type="text" placeholder="Ism" required>
+            <input class="registration-form__field" id="name-input" name="username" type="text" placeholder="Ism va familiya" autocomplete="off" required>
           </p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="phone-input">Telefon raqami*</label>
@@ -116,11 +115,9 @@
             <label class="visually-hidden" for="course-select">O'quv kurs</label>
             <select class="registration-form__field" name="course" id="course-select">
               <option value="" selected disabled>Kursni tanlang</option>
-              <option value="frontend">Frontend dasturlash</option>
-              <option value="backend">Backend dasturlash</option>
-              <option value="graphic_design">Grafik dizayn</option>
-              <option value="smm">SMM</option>
-              <option value="digital_marketing">Raqamli marketing</option>
+              <% for(let i of courses) { %>
+              <option value="<%= i.id %>"><%= i.name %></option>
+              <% } %>
             </select>
           </p>
           <button class="button button--open" type="submit">
@@ -295,29 +292,30 @@
         <h2 class="section__heading">Kurslar</h2>
   
         <ul class="courses__list">
+          <% for (let course of courses) { %>
           <li class="courses__item">
             <article class="course">
               <div class="course__main">
                 <div class="course__info">
-                  <h3 class="course__title">UX/UI design</h3>
+                  <h3 class="course__title"><%= course.name %></h3>
                   <p class="course__info-text">We will learn "never die" and the most profitable skill in the world also
                     in the Uzbekistan.</p>
                   <div class="course__details">
                     <div class="course__meta">
                       <p class="course__meta-heading">Dars davomiyligi</p>
-                      <p class="course__meta-value">3 soat</p>
+                      <p class="course__meta-value"><%= course.lesson_duration %> soat</p>
                     </div>
                     <div class="course__meta">
                       <p class="course__meta-heading">Kurs davomiyligi</p>
-                      <p class="course__meta-value">7 oy</p>
+                      <p class="course__meta-value"><%= course.duration %> oy</p>
                     </div>
                   </div>
                 </div>
-                <img class="course__poster" src="https://picsum.photos/200" alt="" width="200" height="200">
+                <img class="course__poster" src="http://placeimg.com/200/200/tech" alt="" width="200" height="200">
               </div>
               <footer class="course__footer">
                 <div class="course__footer-action">
-                  <a class="button button--full" href="/course">
+                  <a class="button button--full" href="/course/<%= course.id %>">
                     <span class="button__wrapper">
                       <span class="button__text">Batafsil</span>
                       <svg class="button__arrow" aria-hidden="true" focusable="false" width="21" height="12">
@@ -328,125 +326,15 @@
                 </div>
                 <div class="course__meta">
                   <p class="course__meta-heading">Kurs to'lovi (bir oy uchun)</p>
-                  <p class="course__meta-value course__meta-value--large">550 000 so'm</p>
+                  <p class="course__meta-value course__meta-value--large"><%= course.price %> 000 so'm</p>
                 </div>
               </footer>
             </article>
           </li>
-          <li class="courses__item">
-            <article class="course">
-              <div class="course__main">
-                <div class="course__info">
-                  <h3 class="course__title">UX/UI design</h3>
-                  <p class="course__info-text">We will learn "never die" and the most profitable skill in the world also in the Uzbekistan.</p>
-                  <div class="course__details">
-                    <div class="course__meta">
-                      <p class="course__meta-heading">Dars davomiyligi</p>
-                      <p class="course__meta-value">3 soat</p>
-                    </div>
-                    <div class="course__meta">
-                      <p class="course__meta-heading">Kurs davomiyligi</p>
-                      <p class="course__meta-value">7 oy</p>
-                    </div>
-                  </div>
-                </div>
-                <img class="course__poster" src="https://picsum.photos/200" alt="" width="200" height="200">
-              </div>
-              <footer class="course__footer">
-                <div class="course__footer-action">
-                  <a class="button button--full" href="/course">
-                    <span class="button__wrapper">
-                      <span class="button__text">Batafsil</span>
-                      <svg class="button__arrow" aria-hidden="true" focusable="false" width="21" height="12">
-                        <use xlink:href="#arrow-right"></use>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-                <div class="course__meta">
-                  <p class="course__meta-heading">Kurs to'lovi (bir oy uchun)</p>
-                  <p class="course__meta-value course__meta-value--large">550 000 so'm</p>
-                </div>
-              </footer>
-            </article>
-          </li>
-          <li class="courses__item">
-            <article class="course">
-              <div class="course__main">
-                <div class="course__info">
-                  <h3 class="course__title">UX/UI design</h3>
-                  <p class="course__info-text">We will learn "never die" and the most profitable skill in the world also in the Uzbekistan.</p>
-                  <div class="course__details">
-                    <div class="course__meta">
-                      <p class="course__meta-heading">Dars davomiyligi</p>
-                      <p class="course__meta-value">3 soat</p>
-                    </div>
-                    <div class="course__meta">
-                      <p class="course__meta-heading">Kurs davomiyligi</p>
-                      <p class="course__meta-value">7 oy</p>
-                    </div>
-                  </div>
-                </div>
-                <img class="course__poster" src="https://picsum.photos/200" alt="" width="200" height="200">
-              </div>
-              <footer class="course__footer">
-                <div class="course__footer-action">
-                  <a class="button button--full" href="/course">
-                    <span class="button__wrapper">
-                      <span class="button__text">Batafsil</span>
-                      <svg class="button__arrow" aria-hidden="true" focusable="false" width="21" height="12">
-                        <use xlink:href="#arrow-right"></use>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-                <div class="course__meta">
-                  <p class="course__meta-heading">Kurs to'lovi (bir oy uchun)</p>
-                  <p class="course__meta-value course__meta-value--large">550 000 so'm</p>
-                </div>
-              </footer>
-            </article>
-          </li>
-          <li class="courses__item">
-            <article class="course">
-              <div class="course__main">
-                <div class="course__info">
-                  <h3 class="course__title">UX/UI design</h3>
-                  <p class="course__info-text">We will learn "never die" and the most profitable skill in the world also in the Uzbekistan.</p>
-                  <div class="course__details">
-                    <div class="course__meta">
-                      <p class="course__meta-heading">Dars davomiyligi</p>
-                      <p class="course__meta-value">3 soat</p>
-                    </div>
-                    <div class="course__meta">
-                      <p class="course__meta-heading">Kurs davomiyligi</p>
-                      <p class="course__meta-value">7 oy</p>
-                    </div>
-                  </div>
-                </div>
-                <img class="course__poster" src="https://picsum.photos/200" alt="" width="200" height="200">
-              </div>
-              <footer class="course__footer">
-                <div class="course__footer-action">
-                  <a class="button button--full" href="/course">
-                    <span class="button__wrapper">
-                      <span class="button__text">Batafsil</span>
-                      <svg class="button__arrow" aria-hidden="true" focusable="false" width="21" height="12">
-                        <use xlink:href="#arrow-right"></use>
-                      </svg>
-                    </span>
-                  </a>
-                </div>
-                <div class="course__meta">
-                  <p class="course__meta-heading">Kurs to'lovi (bir oy uchun)</p>
-                  <p class="course__meta-value course__meta-value--large">550 000 so'm</p>
-                </div>
-              </footer>
-            </article>
-          </li>
+          <% } %>
         </ul>
         <footer class="section__footer">
-          <a class="section__footer-link" href="/course">
+          <a class="section__footer-link" href="/courses">
             Barcha kurslarni ko'rish
             <svg class="section__footer-link-icon" aria-hidden="true" focusable="false" width="21" height="12">
               <use xlink:href="#arrow-right"></use>
@@ -461,62 +349,15 @@
       <div class="container">
         <h2 class="section__heading">Bizning jamoa</h2>
         <ul class="team__list">
+          <% for (let member of team) { %>
           <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
+            <img class="team-member__img" src="https://placebeard.it/200x300" alt="" width="250" height="300">
             <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
+              <p class="team-member__name"><strong><%= member.full_name %></strong></p>
+              <p class="team-member__position"><%= member.profession %></p>
             </div>
           </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="240" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="240" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="240" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="240" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
+          <% } %>
         </ul>
   
         <footer class="section__footer">
@@ -1063,7 +904,7 @@
           <p class="registration-form__text">Sizni qiziqtira olgan o'quv kursni tanlang va bepul ochiq darsga ro'yxatdan o'ting.</p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="name-input-footer">Ism*</label>
-            <input class="registration-form__field" id="name-input-footer" name="name" type="text" placeholder="Ism" required>
+            <input class="registration-form__field" id="name-input-footer" name="username" type="text" placeholder="Ism" required>
           </p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="phone-input-footer">Telefon raqami*</label>
@@ -1074,11 +915,10 @@
             <label class="visually-hidden" for="course-select-footer">O'quv kurs</label>
             <select class="registration-form__field" name="course" id="course-select-footer">
               <option value="" selected disabled>Kursni tanlang</option>
-              <option value="frontend">Frontend dasturlash</option>
-              <option value="backend">Backend dasturlash</option>
-              <option value="graphic_design">Grafik dizayn</option>
-              <option value="smm">SMM</option>
-              <option value="digital_marketing">Raqamli marketing</option>
+              <% for(let i of courses) { %>
+                <option value="<%= i.id %>"><%= i.name %></option>
+                <% } %>
+              <option value="fugliz-tili-IELTS">Ingliz tili IELTS</option>
             </select>
           </p>
           <button class="button button--open" type="submit">

@@ -86,7 +86,6 @@
           <li class="sitenav__item"><a href="/blog" class="sitenav__link">Blog</a></li>
           <li class="sitenav__item"><a href="/#results" class="sitenav__link">Natijalar</a></li>
           <li class="sitenav__item"><a href="#" class="sitenav__link">Kontaktlar</a></li>
-          <li class="sitenav__item"><a href="/admin" class="sitenav__link">Admin</a></li>
         </ul>
         </ul>
       </div>
@@ -106,31 +105,31 @@
     <section class="section courses" id="courses">
       <div class="container">
         <h2 class="visually-hidden">O'quv kurslar ro'yxati</h2>
-    
         <ul class="courses__list">
+        <% for ( let c of courses ) {%> 
           <li class="courses__item">
             <article class="course">
               <div class="course__main">
                 <div class="course__info">
-                  <h3 class="course__title">UX/UI design</h3>
-                  <p class="course__info-text">We will learn "never die" and the most profitable skill in the world also
-                    in the Uzbekistan.</p>
+                  <h3 class="course__title"><%= c.name %></h3>
+                  <p class="course__info-text"><%= c.short_info %></p>
+                  <!-- <p style="width: 500px;" class="course__info-text"><%= c.long_info %></p> -->
                   <div class="course__details">
                     <div class="course__meta">
                       <p class="course__meta-heading">Dars davomiyligi</p>
-                      <p class="course__meta-value">3 soat</p>
+                      <p class="course__meta-value"><%= c.lesson_duration %> soat</p>
                     </div>
                     <div class="course__meta">
                       <p class="course__meta-heading">Kurs davomiyligi</p>
-                      <p class="course__meta-value">7 oy</p>
+                      <p class="course__meta-value"><%= c.duration %> oy</p>
                     </div>
                   </div>
                 </div>
-                <img class="course__poster" src="https://picsum.photos/200" alt="" width="200" height="200">
+                <img class="course__poster" src="https://picsum.photos/200/200" width="200" height="200">
               </div>
               <footer class="course__footer">
                 <div class="course__footer-action">
-                  <a class="button button--full" href="/course">
+                  <a class="button button--full" href="/course/<%= c.id %>">
                     <span class="button__wrapper">
                       <span class="button__text">Batafsil</span>
                       <svg class="button__arrow" aria-hidden="true" focusable="false" width="21" height="12">
@@ -141,12 +140,13 @@
                 </div>
                 <div class="course__meta">
                   <p class="course__meta-heading">Kurs to'lovi (bir oy uchun)</p>
-                  <p class="course__meta-value course__meta-value--large">550 000 so'm</p>
+                  <p class="course__meta-value course__meta-value--large"><%= c.price %> 000 so'm</p>
                 </div>
               </footer>
             </article>
           </li>
-          <li class="courses__item">
+          <% } %>
+         <!--  <li class="courses__item">
             <article class="course">
               <div class="course__main">
                 <div class="course__info">
@@ -259,7 +259,7 @@
                 </div>
               </footer>
             </article>
-          </li>
+          </li> -->
         </ul>
       </div>
     </section>
@@ -273,7 +273,7 @@
             o'ting.</p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="name-input-footer">Ism*</label>
-            <input class="registration-form__field" id="name-input-footer" name="name" type="text" placeholder="Ism"
+            <input class="registration-form__field" id="name-input-footer" name="username" type="text" placeholder="Ism va familiya"
               required>
           </p>
           <p class="registration-form__group">
@@ -285,11 +285,9 @@
             <label class="visually-hidden" for="course-select-footer">O'quv kurs</label>
             <select class="registration-form__field" name="course" id="course-select-footer">
               <option value="" selected disabled>Kursni tanlang</option>
-              <option value="frontend">Frontend dasturlash</option>
-              <option value="backend">Backend dasturlash</option>
-              <option value="graphic_design">Grafik dizayn</option>
-              <option value="smm">SMM</option>
-              <option value="digital_marketing">Raqamli marketing</option>
+              <% for(let i of courses) { %>
+              <option value="<%= i.id %>"><%= i.name %></option>
+              <% } %>
             </select>
           </p>
           <button class="button button--open" type="submit">

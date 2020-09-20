@@ -1,2 +1,0 @@
-# najot-talim-verstka
- najottalim

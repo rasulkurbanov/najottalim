@@ -86,7 +86,6 @@
           <li class="sitenav__item sitenav__item--active"><a href="/blog" class="sitenav__link">Blog</a></li>
           <li class="sitenav__item"><a href="/#results" class="sitenav__link">Natijalar</a></li>
           <li class="sitenav__item"><a href="#" class="sitenav__link">Kontaktlar</a></li>
-          <li class="sitenav__item"><a href="/admin" class="sitenav__link">Admin</a></li>
         </ul>
         </ul>
 
@@ -213,7 +212,7 @@
             o'ting.</p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="name-input-footer">Ism*</label>
-            <input class="registration-form__field" id="name-input-footer" name="name" type="text" placeholder="Ism"
+            <input class="registration-form__field" id="name-input-footer" name="username" type="text" placeholder="Ism va familiya"
               required>
           </p>
           <p class="registration-form__group">
@@ -225,11 +224,9 @@
             <label class="visually-hidden" for="course-select-footer">O'quv kurs</label>
             <select class="registration-form__field" name="course" id="course-select-footer">
               <option value="" selected disabled>Kursni tanlang</option>
-              <option value="frontend">Frontend dasturlash</option>
-              <option value="backend">Backend dasturlash</option>
-              <option value="graphic_design">Grafik dizayn</option>
-              <option value="smm">SMM</option>
-              <option value="digital_marketing">Raqamli marketing</option>
+              <% for(let i of courses) { %>
+              <option value="<%= i.id %>"><%= i.name %></option>
+              <% } %>
             </select>
           </p>
           <button class="button button--open" type="submit">

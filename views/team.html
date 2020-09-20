@@ -107,20 +107,23 @@
       <div class="container">
         <h2 class="visually-hidden">Jamoa a'zolari</h2>
         <ul class="team__list">
+          <% for ( let member of team ) {%> 
           <li class="team-member">
+            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
+            <div class="team-member__info">
+              <p class="team-member__name"><strong><%= member.full_name %></strong></p>
+              <p class="team-member__position"><%= member.profession %></p>
+            </div>
+          </li>
+          <% } %>
+           <!-- <li class="team-member">
             <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
             <div class="team-member__info">
               <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
               <p class="team-member__position">Designer</p>
             </div>
-          </li>
-          <li class="team-member">
-            <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
-            <div class="team-member__info">
-              <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
-              <p class="team-member__position">Designer</p>
-            </div>
-          </li>
+          </li> -->
+          <!--
           <li class="team-member">
             <img class="team-member__img" src="https://picsum.photos/250/300" alt="" width="250" height="300">
             <div class="team-member__info">
@@ -162,7 +165,7 @@
               <p class="team-member__name"><strong>Abdujalilov Abdulaziz</strong></p>
               <p class="team-member__position">Designer</p>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
     </section>
@@ -176,7 +179,7 @@
             o'ting.</p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="name-input-footer">Ism*</label>
-            <input class="registration-form__field" id="name-input-footer" name="name" type="text" placeholder="Ism"
+            <input class="registration-form__field" id="name-input-footer" name="username" type="text" placeholder="Ism va familiya"
               required>
           </p>
           <p class="registration-form__group">
@@ -188,11 +191,9 @@
             <label class="visually-hidden" for="course-select-footer">O'quv kurs</label>
             <select class="registration-form__field" name="course" id="course-select-footer">
               <option value="" selected disabled>Kursni tanlang</option>
-              <option value="frontend">Frontend dasturlash</option>
-              <option value="backend">Backend dasturlash</option>
-              <option value="graphic_design">Grafik dizayn</option>
-              <option value="smm">SMM</option>
-              <option value="digital_marketing">Raqamli marketing</option>
+              <% for(let i of courses) { %>
+              <option value="<%= i.id %>"><%= i.name %></option>
+              <% } %>
             </select>
           </p>
           <button class="button button--open" type="submit">

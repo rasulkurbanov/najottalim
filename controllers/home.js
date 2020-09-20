@@ -1,12 +1,17 @@
-module.exports = {
+const { CoreModel } = require('../database.js')
+const coreModel = new CoreModel()
 
+
+module.exports = {
 	get :  async (req,res) => {
-	const body = req.body
-	res.render('index', { body: body})
+		const { rows } = await coreModel.query('select * from courses')
+		const { rows: team } = await coreModel.query('select * from team')
+		const body = req.body
+		res.render('index', { body: body, courses: rows, team})
 },
 	post : async(req,res) => { 
 
-	const name = req.body.name
+	const name = req.body.username
 	const number = req.body.phone_number
 	const course = req.body.course
 
@@ -15,28 +20,18 @@ module.exports = {
 		res.render('errorpost')
 	}
 
-	else if(!(isNaN(parseInt(name))) & (isNaN(number)) ) {
-
+	else if(!(isNaN(parseInt(name))) && (isNaN(number)) ) {
 		res.render('twoerrors')
 	}
-
 	else {
-
 		res.render('post')
-
-		const client = await req.pgPool.connect()	
-		
-		const result = await client.query(`
-
-		INSERT INTO posts (
-
+		const result = await coreModel.query(`
+		INSERT INTO students (
 			full_name,
 			phone_number,
-			course_type
+			course_id
 		)
 		VALUES ( $1, $2, $3)`, [ name, number, course ])
-
-		client.release()
 	  }
 	}
 }

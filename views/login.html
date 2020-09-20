@@ -2,41 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Registration form</title>
-	<link rel="stylesheet" href="static/css/post.css">
-    <link rel="stylesheet" href="static/css/main.css">
+	<title>Log in </title>
+  	<link rel="stylesheet" href="static/css/main.css">
+	<link rel="stylesheet" href="static/css/admin.css">
 </head>
 <body>
 
-	<nav class="sitenav sitenav--nojs">
-    <h2 class="visually-hidden">Sayt menyusi</h2>
-    <div class="container sitenav__container">
-      <div class="logo">
-        <a class="logo__link" href="">
-          <img class="logo__img logo__img--symbol" src="static/img/logo-mark.svg" alt="Najot Ta'lim logotipi" width="58"
-            height="40">
-          <img class="logo__img logo__img--text" src="static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="155" height="33">
-        </a>
-      </div>
-      <button class="sitenav__toggler" type="button">Menu</button>
+<div class="logo">
+	 	<img class="logo__img logo__img--text" id="image" src="static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="500" height="200">
+		<h1>Bu bet Najot Talim adminstratorlari uchun !</h1>
 
-      <div class="sitenav__collapse">
-        <ul class="sitenav__list">
-          <li class="sitenav__item"><a href="/" class="sitenav__link">Home</a></li>
-          <li class="sitenav__item"><a href="/courses" class="sitenav__link">Kurslar</a></li>
-          <li class="sitenav__item"><a href="/team" class="sitenav__link">Jamoa</a></li>
-          <li class="sitenav__item"><a href="#stats" class="sitenav__link">Biz haqimizda</a></li>
-          <li class="sitenav__item"><a href="/blog" class="sitenav__link">Blog</a></li>
-          <li class="sitenav__item"><a href="#results" class="sitenav__link">Natijalar</a></li>
-        </ul>
-        </ul>
-  </nav>
-  <div id="post">
-		<h1>Siz ism va raqamni kiritishda xatolikka yo'l qo'ydingiz!</h1>
-		<p> Iltimos ortga qaytib xatoni  to'g'irlang!</p>
-		<img src="static/img/logo-mark-text.svg" alt="Najot talim logotipi">
-	</div>
-  <footer class="section site-footer">
+		<section class="registration" id="registration">
+      	<div class="container registration__container">     
+       	 <form class="registration-form" method="POST" action="/login">
+          <h2 class="registration-form__heading">Admin</h2>
+          <p class="registration-form__text">Royxatdan otgan talabalarni korish uchun login va parolni kiriting.</p>
+          <p class="registration-form__group">
+            <label class="visually-hidden" for="name-input-footer">Login</label>
+            <input class="registration-form__field" id="name-input-footer" name="name" type="text" placeholder="Loginni kiriting" required>
+          </p>
+          <p class="registration-form__group">
+            <label class="visually-hidden" for="phone-input-footer">Parol</label>
+            <input class="registration-form__field" id="phone-input-footer" name="password" type="password"
+              placeholder="Parolni kiriting" required>
+          </p>
+          <button class="button button--open" type="submit">
+            <span class="button__wrapper">
+              <span class="button__text">Saytga kiring</span>
+              <svg class="button__arrow" aria-hidden="true" focusable="false" width="21" height="12">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </span>
+          </button>
+        </form>
+    </section>	
+</div>
+
+	<footer class="section site-footer">
     <div class="container">
       <section class="socials">
         <h3 class="visually-hidden">Ijtimoiy tarmoqlar</h3>
@@ -67,7 +69,6 @@
           </li>
         </ul>
       </section>
-
       <ul class="site-footer__links-list">
         <li class="site-footer__links-item"><a class="site-footer__link" href="/#stats">Biz haqimizda</a></li>
         <li class="site-footer__links-item"><a class="site-footer__link" href="/courses">Kurslar</a></li>
@@ -78,21 +79,10 @@
         <li class="site-footer__links-item"><a class="site-footer__link" href="#">Kontaktlar</a></li>
         <li class="site-footer__links-item"><a class="site-footer__link" href="#">Yordam</a></li>
       </ul>
-
       <p class="site-footer__copyright">Copyright 2017-2020 NT Ltd. Designer_A & Backend Developer. All rights reserved.</p>
     </div>
-  </footer>
-
-
-  <!-- MODALS -->
-  <section class="modal">
-    <h2 class="visually-hidden">YouTube modal oynasi</h2>
-    <div class="modal__dialog modal__dialog--youtube">
-      <button class="modal__close-button" type="button">&times;</button>
-      <div class="embed-responsive">
-        <iframe class="modal__youtube-iframe embed-responsive__iframe" width="560" height="315" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
+  </footer>	 
+<script src="static/js/scripts.min.js"></script>
+	
 </body>
 </html>

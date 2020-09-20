@@ -15,7 +15,7 @@
   <link rel="preload" href="static/fonts/ProximaNova-Semibold.woff" as="font" type="font/woff" crossorigin="anonymous">
   <link rel="preload" href="static/fonts/ProximaNova-Bold.woff" as="font" type="font/woff" crossorigin="anonymous">
   <!-- Styles -->
-  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="../static/css/main.css">
 </head>
 
 <body>
@@ -70,9 +70,9 @@
     <div class="container sitenav__container">
       <div class="logo">
         <a class="logo__link" href="/">
-          <img class="logo__img logo__img--symbol" src="static/img/logo-mark.svg" alt="Najot Ta'lim logotipi" width="58"
+          <img class="logo__img logo__img--symbol" src="../static/img/logo-mark.svg" alt="Najot Ta'lim logotipi" width="58"
             height="40">
-          <img class="logo__img logo__img--text" src="static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="155"
+          <img class="logo__img logo__img--text" src="../static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="155"
             height="33">
         </a>
       </div>
@@ -87,7 +87,6 @@
           <li class="sitenav__item"><a href="/#results" class="sitenav__link">Natijalar</a></li>
           <li class="sitenav__item"><a href="#" class="sitenav__link">Kontaktlar</a></li>
         </ul>
-        <li class="sitenav__item"><a href="/admin" class="sitenav__link">Admin</a></li>
         </ul>
       </div>
       <a href="#registration" class="sitenav__signup-link">Kursga ro'yxatdan o'tish</a>
@@ -98,7 +97,7 @@
   <main class="main-content">
     <header class="page-header">
       <div class="container">
-        <h1 class="page-header__title">UX/UI dizayn kursi</h1>
+        <h1 class="page-header__title"><%= selectedCourse.name %></h1>
       </div>
     </header>
 
@@ -109,7 +108,7 @@
         <div class="course-info__inner">
           <header class="course-info__header">
             <img class="course-info__poster" src="https://picsum.photos/400" alt="Kurs posteri" width="400" height="400">
-
+            
             <div class="course-info__meta">
               <p class="course-info__short-info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure veniam earum delectus explicabo nulla in reiciendis recusandae? Quos ipsum totam minima similique dolore repellat nulla voluptatem, ex dolorum cumque! Culpa.</p>
 
@@ -117,15 +116,15 @@
                 <caption class="visually-hidden">Kurs haqida ma'lumotlar</caption>
                 <tr>
                   <th scope="row">Dars davomiyligi</th>
-                  <td>2 soat</td>
+                  <td><%= selectedCourse.lesson_duration %> soat</td>
                 </tr>
                 <tr>
                   <th scope="row">Kurs davomiyligi</th>
-                  <td>8 oy</td>
+                  <td><%= selectedCourse.duration %> oy</td>
                 </tr>
                 <tr>
                   <th scope="row">Kurs narxi</th>
-                  <td>500 000 so'm/oy</td>
+                  <td><%= selectedCourse.price %> 000 so'm/oy</td>
                 </tr>
               </table>
 
@@ -188,7 +187,7 @@
             o'ting.</p>
           <p class="registration-form__group">
             <label class="visually-hidden" for="name-input-footer">Ism*</label>
-            <input class="registration-form__field" id="name-input-footer" name="name" type="text" placeholder="Ism"
+            <input class="registration-form__field" id="name-input-footer" name="username" type="text" placeholder="Ism va familiya"
               required>
           </p>
           <p class="registration-form__group">
@@ -200,11 +199,9 @@
             <label class="visually-hidden" for="course-select-footer">O'quv kurs</label>
             <select class="registration-form__field" name="course" id="course-select-footer">
               <option value="" selected disabled>Kursni tanlang</option>
-              <option value="frontend">Frontend dasturlash</option>
-              <option value="backend">Backend dasturlash</option>
-              <option value="graphic_design">Grafik dizayn</option>
-              <option value="smm">SMM</option>
-              <option value="digital_marketing">Raqamli marketing</option>
+              <% for(let i of courses) { %>
+              <option value="<%= i.id %>"><%= i.name %></option>
+              <% } %>
             </select>
           </p>
           <button class="button button--open" type="submit">
@@ -218,7 +215,7 @@
         </form>
     
         <div class="registration__motto">
-          <img class="registration__logo" src="static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="270" height="58">
+          <img class="registration__logo" src="../static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="270" height="58">
           <p class="registration__text">Ro'yxatdan o'tib biz bilan o'rganing!</p>
         </div>
       </div>
@@ -273,8 +270,6 @@
     </div>
   </footer>
 
-
   <script src="static/js/scripts.min.js"></script>
 </body>
-
 </html>

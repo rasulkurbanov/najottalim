@@ -4,11 +4,13 @@
 	<meta charset="UTF-8">
 	<title>Admin</title>
 	<link rel="stylesheet" href="static/css/admin.css">
-  	<link rel="stylesheet" href="static/css/main.css">
-  	<link rel="stylesheet" href="static/css/table.css">
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/table.css">
 </head>
 <body>
-
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <div class="logo">
    	<nav class="sitenav sitenav--nojs">
@@ -23,6 +25,7 @@
       </div>
       <button class="sitenav__toggler" type="button">Menu</button>
 
+      
       <div class="sitenav__collapse">
         <ul class="sitenav__list">
           <li class="sitenav__item"><a href="/courses" class="sitenav__link">Kurslar</a></li>
@@ -36,28 +39,89 @@
  	 </nav>
 
 	 	<img class="logo__img logo__img--text" id="image" src="static/img/logo-mark-text.svg" alt="Najot Ta'lim logotipi" width="500" height="200">
-		<h1>Bu bet Najot Talim adminstratorlari uchun !</h1>	
+		<h1>Bu bet Najot Ta`lim adminstratorlari uchun !</h1>	
 	</div>
+   
+  <!-- Admin  yangi course qo'shish uchun panel -->
+  <!-- <div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="well well-sm">
+            <form class="form-horizontal" action="" method="POST" action="/admin">
+            <fieldset>
+              <legend class="text-center">Yangi kurs qo'shish</legend>
+      
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="name">Kurs nomi</label>
+                <div class="col-md-9">
+                  <input id="name" name="course_name" type="text" placeholder="Kurs nomi" class="form-control">
+                </div>
+              </div>
 
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="name">Kurs narxi</label>
+                <div class="col-md-9">
+                  <input id="name" name="course_price" type="text" placeholder="Kurs narxi" class="form-control">
+                </div>
+              </div>
 
-<table id="table"class="table table-bordered table-condensed table-striped">
-  <tr>
-    <th>id</th>
-    <th>Ism Familiya</th>
-    <th>Contact</th>
-    <th>Kurs Turi</th>
-    <th>Jonatilgan sanasi</th>
-  </tr>
-  <% for (let i of body) { %>
-  <tr>
-    <td><%= i.id %></td>	
-    <td><%= i.full_name %></td>
-    <td><%= i.phone_number %></td>
-    <td><%= i.course_type %></td>
-    <td><%= i.craeted %></td>
-  </tr>
-  <% } %>
-</table>
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="name">Davomiyligi (oy)</label>
+                <div class="col-md-9">
+                  <input id="name" name="course_duration" type="number" min="1" max="12" placeholder="Kurs davomiyligi" class="form-control">
+                  <input id="name" name="lesson_duration" type="number"  placeholder="Davomiyligi soat" class="form-control">
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="message">Qisqa ma'lumot</label>
+                <div class="col-md-9">
+                  <textarea class="form-control" id="message" name="brief_info" placeholder="Please enter your message here..." rows="2"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="message">Batafsil ma'lumot</label>
+                <div class="col-md-9">
+                  <textarea class="form-control" id="message" name="long_info" placeholder="Please enter your message here..." rows="5"></textarea>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="col-md-3" for="avatar">Rasm yuklash uchun</label>
+                <div class="col-md-9">
+                  <input type="file" id="avatar" name="image_file" accept="image/png, image/jpeg">
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Tasdiqlash</button>
+                </div>
+              </div>
+            </fieldset>
+            </form>
+          </div>
+        </div>
+    </div> -->
+
+  <div class="container">
+    <table style="width: 75%; margin: 0 auto; border: 2px dashed #fab00b;">
+      <tr>
+        <th style="color: #fab00b; text-align: center;">ID</th>
+        <th style="color: #fab00b; text-align: center;">Ism-familiyasi</th>
+        <th style="color: #fab00b; text-align: center;">Tanlagan kurs nomi</th>
+        <th style="color: #fab00b; text-align: center;">Telefon raqami</th>
+      </tr>
+      <% for(let i of rows) { %>
+      <tr style="text-align: center;">
+        <th style="text-align: center;"><%= i.id %></th>
+        <th style="text-align: center;"><%= i.full_name %></th>
+        <th style="text-align: center;"><%= i.name %></th>
+        <th style="text-align: center;"><%= i.phone_number %></th>
+      </tr>
+      <% } %>
+    </table>
+  </div>
 
   <footer class="section site-footer">
     <div class="container">
